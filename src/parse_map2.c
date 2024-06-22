@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 16:03:56 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/22 17:06:55 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/22 19:10:19 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,6 @@ int is_map_rectangular(char *map, size_t len)
     return (1);
 }
 
-int count_lines(char *map)
-{
-	int count = 0;
-	while (*map != '\0')
-	{
-		if (*map == '\n')
-			count++;
-		map++;
-	} 
-	count++;
-	return (count);
-}
 int check_walls(char *map)
 {
 	// check if first line is a wall
@@ -81,4 +69,25 @@ int check_walls(char *map)
 		i--;
 	}
 	return (1);
+}
+
+// check for valid path 
+	// is the exit accessible from the start position
+	// are all the collectibles accessible from the start position
+
+int check_valid_path(t_data *data)
+{
+	// count_characters(map);
+	char *temp_map;
+	
+	temp_map = data->map;
+	while(*temp_map != '\0')
+    {
+        
+        if (*temp_map == 'C')
+            data->C_counter++;
+        
+        temp_map++;
+    }
+	
 }

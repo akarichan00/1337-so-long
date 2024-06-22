@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:53:14 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/22 16:04:11 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:36:37 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char *read_map(int fd)
 	}
 	original_map = map;
 	if (is_map_rectangular(original_map, len) == 0)
-			return (ft_printf("Error\nMap not rectangular!\n"), free(map), (NULL));
+			return (free(map), (NULL));
 	free(original_map);
 	return(map);
 }
@@ -87,7 +87,7 @@ int is_map_valid(t_data *data)
     {
         if (is_character_invalid(*temp_map) == 1)
 		{
-			ft_printf("Error\nMap contains invalid character '%c'\n", *temp_map);
+			// ft_printf("Error\nMap contains invalid character '%c'\n", *temp_map);
             return (0);
 		}
 		temp_map++;
@@ -95,7 +95,7 @@ int is_map_valid(t_data *data)
 	count_characters(data);
     if (data->E_counter != 1 || data->C_counter < 1 || data->P_counter < 1)
 		{
-			printf("Error\nMap has invalid counts (E: %d, C: %d, P: %d)\n", data->E_counter, data->C_counter, data->P_counter);
+			// ft_printf("Error\nMap has invalid counts (E: %d, C: %d, P: %d)\n", data->E_counter, data->C_counter, data->P_counter);
 			return (0);
 		}
     return (1);
