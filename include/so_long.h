@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/09 16:06:32 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:57:00 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <math.h>
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
-# include "/usr/local/include/mlx.h"
+// # include "/usr/local/include/mlx.h"
 
 typedef struct s_data
 {
@@ -35,6 +35,6 @@ typedef struct s_data
 int is_map_rectangular(char *map, size_t len);
 char *read_map(int fd);
 int is_map_valid(t_data *data);
-
+int check_walls(char *map);
 
 # endif
