@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/09 17:01:31 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:47:30 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int parse_map(char *av, t_data data)
 	if (len > 4 && ft_strncmp(av + len - 4, ".ber", 4) == 0)
 	{
 		int fd = open(av, O_RDONLY);
+		// check if the file is readable and was opened successfully
 		if (fd == -1)
 			return (perror("Error\n"), 0);
+		// append the map in a string line by line
 		data.map = read_map(fd);
 		if (!data.map || !is_map_valid(&data))
 			return (0);

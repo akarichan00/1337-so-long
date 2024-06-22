@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:53:14 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/09 17:00:26 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/22 12:56:35 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char *read_map(int fd)
 		line = get_next_line(fd);
 	}
 	original_map = map;
+
 	if (is_map_rectangular(original_map, len) == 0)
 			return (ft_printf("Error\nMap not rectangular!"), free(map), (NULL));
 	free(original_map);
