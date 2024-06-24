@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/22 19:08:34 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:24:47 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ int is_map_rectangular(char *map, size_t len);
 char *read_map(int fd);
 int is_map_valid(t_data *data);
 int check_walls(char *map);
-int check_valid_path(t_data *data);
+// int check_valid_path(t_data *data);
 void count_characters(t_data *data);
+void	free_words(char **strings, int index);
+void get_player_position(char **map, int *x, int *y);
+char **convert_to_2d_array(char *str);
+void calculate_dimensions(char *str, int *rows, int *cols);
+int check_valid_path(t_data *data, int *x, int *y);
+void print_2d_array(char **arr, int rows, int cols);
 
 # endif

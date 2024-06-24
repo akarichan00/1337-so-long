@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 19:27:10 by noben-ai          #+#    #+#             */
-/*   Updated: 2023/12/30 19:29:45 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:39:05 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,14 @@ static char	*ft_malloc_word(char *s, char c)
 	return (word);
 }
 
-static int	free_words(char **strings, int index)
+void	free_words(char **strings, int index)
 {
-	if (strings[index] == NULL)
+	while (index >= 0)
 	{
-		if (index != 0)
-			index--;
-		while (index >= 0)
-		{
-			free(strings[index]);
-			index--;
-		}
-		free(strings);
-		strings = NULL;
-		return (1);
+		free(strings[index]);
+		index--;
 	}
-	return (0);
+	free(strings);
 }
 
 static char	**ft_smallsplit(char *s, char **strings, char c)
@@ -76,8 +68,11 @@ static char	**ft_smallsplit(char *s, char **strings, char c)
 		if (*s != c && *s != '\0')
 		{
 			strings[word_index] = ft_malloc_word(s, c);
-			if (free_words(strings, word_index) == 1)
+			if (strings[word_index] == NULL)
+			{
+				free_words(strings, word_index - 1);
 				return (NULL);
+			}
 			word_index++;
 		}
 		while (*s != c && *s != '\0')
@@ -100,3 +95,5 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_smallsplit(str, strings, c));
 }
+
+

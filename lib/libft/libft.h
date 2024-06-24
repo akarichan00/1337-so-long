@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:24:25 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/08 10:42:33 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:37:42 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				free_words(char **strings, int index);
 
 typedef struct s_list
 {

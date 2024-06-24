@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 
-Cflags = -Wall -Wextra -Werror
+Cflags = -Wall -Wextra -Werror 
 
 libft = lib/libft/libft.a
 printf = lib/printf/libftprintf.a
