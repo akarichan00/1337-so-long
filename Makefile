@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 
-Cflags = -Wall -Wextra -Werror 
+ Cflags = -Wall -Wextra -Werror #-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw
 
 libft = lib/libft/libft.a
 printf = lib/printf/libftprintf.a
@@ -29,7 +29,7 @@ $(printf):
 	make -C lib/printf
 
 src/%.o: src/%.c 
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(Cflags) -c $< -o $@
 
 clean:
 	@echo "$(BOLD)$(PURPLE)Cleaning objects...$(RESET)"
