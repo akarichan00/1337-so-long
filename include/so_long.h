@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 07:57:48 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:05:57 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int check_walls(char *map);
 void count_characters(t_data *data);
 void	free_words(char **strings, int index);
 void get_player_position(char **map, int *x, int *y);
-char **convert_to_2d_array(char *str);
+char **convert_to_2d_array(char *str, int *len);
 void calculate_dimensions(char *str, int *rows, int *cols);
 int check_valid_path(t_data *data, int *x, int *y);
-void print_2d_array(char **arr, int rows, int cols);
+// void print_2d_array(char **arr, int rows, int cols);
 
 # endif

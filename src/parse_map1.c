@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:53:14 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/24 12:02:40 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:56:25 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int is_map_valid(t_data *data)
 		temp_map++;
     }
 	count_characters(data);
-    if (data->E_counter != 1 || data->C_counter < 1 || data->P_counter < 1)
+    if (data->E_counter != 1 || data->C_counter < 1 || data->P_counter != 1)
 		{
 			// ft_printf("Error\nMap has invalid counts (E: %d, C: %d, P: %d)\n", data->E_counter, data->C_counter, data->P_counter);
 			return (0);

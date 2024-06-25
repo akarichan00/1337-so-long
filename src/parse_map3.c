@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 07:42:51 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 08:42:41 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:26:09 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,6 @@ void flood_fill(char **map, int x, int y, int *collectibles, int *exits) {
     flood_fill(map, x, y + 1, collectibles, exits);  // Right
 }
 
-void print_2d_array(char **arr, int rows, int cols) 
-{	
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
-            printf("%c", arr[i][j]);
-        }
-        printf("\n");
-    }
-}
-
 int check_map_visited(char **map, int *a, int *b)
 {
 	int  i;
@@ -94,11 +84,12 @@ int check_valid_path(t_data *data, int *x, int *y)
 	char *str;
 	char *cpy;
 	char **map;
+	int i = 0;
 	
 	str = data->map;
 	cpy = str;
 	// covert the map to 2d array (to use it in flood fill algortithm)
-	map = convert_to_2d_array(cpy);
+	map = convert_to_2d_array(cpy, &i);
 	if (!map)
 		return (0);
 	// flood fill algorithm
@@ -108,11 +99,12 @@ int check_valid_path(t_data *data, int *x, int *y)
 	int exits = 0;
 	flood_fill(map, *x, *y, &collectibles, &exits);
 	if (data->C_counter != collectibles || data->E_counter != exits)
-		return (0);
+		return (free_words(map, i), 0);
 	int a = 0;
 	int b = 0;
 	calculate_dimensions(cpy ,&a, &b);
 	if (!check_map_visited(map, &a, &b))
-		return (0);
+		return (free_words(map, i),0);
+	free_words(map, i);
 	return (1);
 }

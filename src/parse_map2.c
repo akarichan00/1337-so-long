@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 16:03:56 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 07:43:34 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:05:10 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void copy_to_2d_array(char **arr, char *str)
 	arr[row][col] = '\0';
 }
 
-char **convert_to_2d_array(char *str)
+char **convert_to_2d_array(char *str, int *len)
 {
 	int rows;
 	int cols;
@@ -147,6 +147,7 @@ char **convert_to_2d_array(char *str)
 		i++;
 	}
 	arr[i] = NULL;
+	*len = i;
 	copy_to_2d_array(arr, str);
 	return arr;	
 }

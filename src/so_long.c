@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 09:04:50 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:09:56 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int parse_map(char *av, t_data *data)
 int main(int ac, char **av)
 {	
 	t_data data;
-	// atexit(check_for_leaks);
+	atexit(check_for_leaks);
 	
 	if (ac == 2)
 	{
