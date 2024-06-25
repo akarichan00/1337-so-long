@@ -7,17 +7,11 @@ Cflags = -Wall -Wextra -Werror
 libft = lib/libft/libft.a
 printf = lib/printf/libftprintf.a
 
-srcs =  src/so_long.c src/parse_map1.c src/parse_map2.c 
+srcs =  src/so_long.c src/parse_map1.c src/parse_map2.c  src/parse_map3.c
 objs = $(srcs:.c=.o)
 
 RESET = \033[0m
 BOLD = \033[1m
-DIM = \033[2m
-UNDERLINE = \033[4m
-BLINK = \033[5m
-INVERT = \033[7m
-LIGHT_BLUE = \033[94m
-YELLOW = \033[93m
 PURPLE = \033[35m
 
 all : $(NAME)
@@ -43,7 +37,7 @@ clean:
 	make -C lib/libft clean
 	make -C lib/printf clean
 
-fclean:
+fclean: clean
 	@echo "$(BOLD)$(PURPLE)Cleaning $(NAME)...$(RESET)"
 	rm -f $(NAME)
 	make -C lib/libft fclean

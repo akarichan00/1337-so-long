@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/24 16:32:40 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:04:50 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void check_for_leaks(void)
 //check errors in map
 int parse_map(char *av, t_data *data)
 {
+	int x;
+	int y;
+
 	int len = ft_strlen(av);
 	if (len > 4 && ft_strncmp(av + len - 4, ".ber", 4) == 0)
 	{
@@ -32,20 +35,13 @@ int parse_map(char *av, t_data *data)
 		data->map = read_map(fd);
 		if (!data->map || !is_map_valid(data) || !check_walls(data->map))
 			return (ft_printf("Error\ninvalid map!\n"), 0);
-		}			
-		else
-			return (ft_printf("Error\ninvalid extension for map\n"), 0);	
-	// char **dmap = convert_to_2d_array(data->map);
-	int x = 0;
-	int y = 0;
+	}			
+	else
+		return (ft_printf("Error\ninvalid extension for map\n"), 0);	
+	x = 0;
+	y = 0;
 	if (!check_valid_path(data, &x, &y))
 		return (ft_printf("Error\ninvalid path!\n"), 0);
-	int a = 0;
-	int b = 0;
-	char *cpy = data->map;
-	calculate_dimensions(cpy ,&a, &b);
-	printf("%s\n", data->map);
-	// print_2d_array(convert_to_2d_array(data->map), a, b);
 	return (1);
 }
 
