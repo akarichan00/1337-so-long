@@ -6,15 +6,17 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 15:22:08 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:17:33 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_for_leaks(void)
+void	free_it_all(t_map_info *info, t_data *data)
 {
-	system("leaks so_long");
+	free(data->map);
+	free_words(info->map, info->free_index);
+	free_words(info->original_map, info->free_index);
 }
 
 int	parse_map(char *av, t_data *data, t_map_info *info)
@@ -30,12 +32,14 @@ int	parse_map(char *av, t_data *data, t_map_info *info)
 			return (perror("Error\n"), 0);
 		data->map = read_map(fd);
 		if (!data->map || !is_map_valid(data) || !check_walls(data->map))
-			return (ft_printf("Error\ninvalid map!\n"), 0);
+			return (ft_printf("Error\ninvalid map!\n"), free(data->map), 0);
 	}
 	else
 		return (ft_printf("Error\ninvalid extension for map\n"), 0);
+	(void)info;
 	if (!check_valid_path(data, info))
-		return (ft_printf("Error\ninvalid path!\n"), 0);
+		return (ft_printf("Error\ninvalid path!\n"), free_it_all(info, data),
+			0);
 	return (1);
 }
 
@@ -54,4 +58,6 @@ int	main(int ac, char **av)
 	}
 	else
 		ft_printf("Error\nInvalid number of arguments :(\n");
+	free_it_all(&info, &data);
+	return (1);
 }

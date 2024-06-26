@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:53:14 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 12:53:19 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:32:05 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	*read_map(int fd)
 			return (NULL);
 		line = get_next_line(fd);
 	}
-	original_map = map;
+	original_map = ft_strdup(map);
 	if (is_map_rectangular(original_map, len) == 0)
-		return (free(map), (NULL));
-	// free(original_map);
-	return (map);
+		return (free(map), free(original_map), (NULL));
+	free(map);
+	return (original_map);
 }
 
 int	is_character_invalid(char c)

@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 07:42:51 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 19:34:25 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:08:05 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	check_map_visited(char **map, int *a, int *b)
 		j = 0;
 		while (j < *b)
 		{
-			if (map[i][j] == 'P' || map[i][j] == 'C' || map[i][j] == 'E'
-				|| map[i][j] == '0')
+			if (map[i][j] == 'P' || map[i][j] == 'C' || map[i][j] == 'E')
 				return (0);
 			j++;
 		}
@@ -82,8 +81,8 @@ int	check_valid_path(t_data *data, t_map_info *info)
 	i = 0;
 	str = data->map;
 	cpy = str;
-	info->map = convert_to_2d_array(cpy, &i);
-	info->original_map = convert_to_2d_array(cpy, &i);
+	info->map = convert_to_2d_array(cpy, &i, info);
+	info->original_map = convert_to_2d_array(cpy, &i, info);
 	if (!info->map)
 		return (0);
 	get_player_position(info);
@@ -94,9 +93,8 @@ int	check_valid_path(t_data *data, t_map_info *info)
 	calculate_dimensions(cpy, &info->a, &info->b);
 	flood_fill(info, info->x, info->y);
 	if (data->c_counter != info->collectibles || data->e_counter != info->exits)
-		return (printf("na uh\n"), 0); // free_words(info->map, i)
+		return (0);
 	if (!check_map_visited(info->map, &info->a, &info->b))
-		return (0); // free_words(info->map, i)
-	// free_words(info->map, i);
+		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 19:30:32 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:17:59 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_map_info
 	int		exits;
 	char	**map;
 	char	**original_map;
+	int		free_index;
 	int		x;
 	int		y;
 	int		a;
@@ -49,7 +50,7 @@ int			check_walls(char *map);
 void		count_characters(t_data *data);
 void		free_words(char **strings, int index);
 void		get_player_position(t_map_info *info);
-char		**convert_to_2d_array(char *str, int *len);
+char		**convert_to_2d_array(char *str, int *len, t_map_info *info);
 void		calculate_dimensions(char *str, int *rows, int *cols);
 int			check_valid_path(t_data *data, t_map_info *info);
 

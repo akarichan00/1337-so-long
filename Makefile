@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 
- Cflags = -Wall -Wextra -Werror #-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw
+Cflags = -Wall -Wextra -Werror #-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw
 
 libft = lib/libft/libft.a
 printf = lib/printf/libftprintf.a

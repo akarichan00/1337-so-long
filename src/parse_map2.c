@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 16:03:56 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/25 14:53:20 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:30:29 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	is_map_rectangular(char *map, size_t len)
 	size_t	len_line;
 
 	len_line = 0;
+	if (!map)
+		return (0);
 	while (*map != '\0')
 	{
 		while (*map != '\0' && *map != '\n')
@@ -53,7 +55,7 @@ int	check_walls(char *map)
 				return (0);
 		}
 	}
-	i = ft_strlen(temp) - 1;
+	i = ft_strlen(temp);
 	while (--i >= 0 && map[i] != '\n')
 	{
 		if (map[i] != '1')
@@ -67,6 +69,8 @@ void	calculate_dimensions(char *str, int *rows, int *cols)
 	int	i;
 
 	i = 0;
+	*rows = 0;
+	*cols = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\n')
@@ -108,7 +112,7 @@ void	copy_to_2d_array(char **arr, char *str)
 	arr[row][col] = '\0';
 }
 
-char	**convert_to_2d_array(char *str, int *len)
+char	**convert_to_2d_array(char *str, int *len, t_map_info *info)
 {
 	int		rows;
 	int		cols;
@@ -132,6 +136,7 @@ char	**convert_to_2d_array(char *str, int *len)
 	}
 	arr[i] = NULL;
 	*len = i;
+	info->free_index = i;
 	copy_to_2d_array(arr, str);
 	return (arr);
 }
