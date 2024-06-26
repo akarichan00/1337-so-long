@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"mlx42.h": "c",
+		"unistd.h": "c",
+		"so_long.h": "c",
+		"algorithm": "c",
+		"__locale": "c",
+		"ios": "c"
+	}
+}

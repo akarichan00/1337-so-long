@@ -1,13 +1,12 @@
 NAME = so_long
 
 CC = cc
-
-Cflags = -Wall -Wextra -Werror #-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw
-
+MlxFlags =  -Iinclude -lm -framework Cocoa -framework OpenGL -framework IOKit
+Cflags = -Wall -Wextra -Werror 
 libft = lib/libft/libft.a
 printf = lib/printf/libftprintf.a
 
-srcs =  src/so_long.c src/parse_map1.c src/parse_map2.c  src/parse_map3.c
+srcs =  src/so_long.c src/parse_map1.c src/parse_map2.c  src/parse_map3.c src/drawing.c
 objs = $(srcs:.c=.o)
 
 RESET = \033[0m
@@ -16,8 +15,8 @@ PURPLE = \033[35m
 
 all : $(NAME)
 
-$(NAME): $(objs) $(libft) $(printf)
-	$(CC) $(Cflags) -o $@ $^ $(libft) $(printf)
+$(NAME): $(objs) $(libft) $(printf) ../MLX42/build/libmlx42.a ../MLX42/build/libglfw3.a
+	$(CC) $(Cflags) $(MlxFlags) -o $@ $^ $(libft) $(printf)
 	@echo "$(BOLD)$(PURPLE)$(NAME) created successfully!$(RESET)"
 
 $(libft): 

@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 07:42:51 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/26 13:08:05 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:26:49 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	flood_fill(t_map_info *info, int x, int y)
 		(info->collectibles)++;
 	if (info->map[x][y] == 'E')
 		(info->exits)++;
+	if (info->map[x][y] == 'E')
+	{
+		info->eposition_x = x;
+		info->eposition_y = y;
+	}
 	info->map[x][y] = '+';
 	flood_fill(info, x + 1, y);
 	flood_fill(info, x - 1, y);
