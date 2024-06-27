@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:48:32 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/27 17:11:12 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:22:22 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,6 @@ void key_press(mlx_key_data_t keydata, void *param)
 		move(param, info->x , info->y - 1);
 	else if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D) && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
 		move(param, info->x, info->y + 1);
-	ft_printf("total coins: %d\n", info->data->c_counter);
-	ft_printf("collected coins: %d\n", info->count_c);
-
 }
 
 void move(t_map_info *info, int x, int y)
