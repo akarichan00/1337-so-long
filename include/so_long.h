@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/26 21:49:46 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:32:57 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,16 @@ typedef struct s_map_info
 	mlx_image_t*	img3;
 	mlx_image_t*	img4;
 	mlx_image_t*	img5;
-
+	t_data *		data;
+	int		count_c;
 	
 }			t_map_info;
+
+typedef struct s_key_info
+{
+    mlx_key_data_t keydata;
+    t_map_info info;
+} t_key_info;
 
 int			is_map_rectangular(char *map, size_t len);
 char		*read_map(int fd);
@@ -76,6 +83,7 @@ int check_boundaries(t_map_info *info, t_data *data);
 int load_images(t_map_info *info);
 int t_to_image(t_map_info *info);
 void display_images(t_map_info *info);
-void key_press(mlx_key_data_t keydata);
+void key_press(mlx_key_data_t keydata, void *param);
+void move(t_map_info *info, int x, int y);
 
 #endif

@@ -5,6 +5,7 @@
 		"so_long.h": "c",
 		"algorithm": "c",
 		"__locale": "c",
-		"ios": "c"
+		"ios": "c",
+		"locale": "c"
 	}
 }

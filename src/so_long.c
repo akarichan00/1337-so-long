@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/26 21:50:23 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:58:25 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 {
 	t_data		data;
 	t_map_info	info;
-
+	
 	// atexit(test_leaks);
 	info.x = 0;
 	info.y = 0;
@@ -59,6 +59,7 @@ int	main(int ac, char **av)
 	{
 		if (!parse_map(av[1], &data, &info))
 			return (0);
+		info.data = &data;
 		ft_printf("valid map 🤓\n");
 		
 		// check if map can be displayed within the mac's resolution :D
@@ -66,7 +67,7 @@ int	main(int ac, char **av)
 			return (ft_printf("Error\nwa tga3ad a regragi!\n"), 0);
 		
 		// reserve how many pixels will be in the window
-		info.mlx = mlx_init(info.b * 90, info.a * 90, "tizk UwU", false); // false to indicate that u cannot expand the window :D
+		info.mlx = mlx_init(info.b * 90, info.a * 90, "so long", false); // false to indicate that u cannot expand the window :D
 		if (!info.mlx)
 			return(ft_printf("Error\ncan't open the window!\n"),0);
 
@@ -84,6 +85,7 @@ int	main(int ac, char **av)
 		
 		// exit if ESC is pressed 
 		mlx_key_hook(info.mlx, key_press, &info);
+		// printf("here\n");
 		mlx_loop(info.mlx);
 		mlx_terminate(info.mlx);
 	}
