@@ -6,38 +6,43 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:48:32 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/27 19:22:22 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:15:49 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int check_boundaries(t_map_info *info, t_data *data)
-{
-	if (info->a > 16 || info->b > 29)
-	{
-		free_it_all(info, data);
-		return (0);
-	}
-	return (1);
-}
-
 int load_images(t_map_info *info)
 {
-	info->player = mlx_load_png("./images/player.png");
-	info->wall = mlx_load_png("./images/wall.png");
-	info->exit = mlx_load_png("./images/exit.png");
-	info->coin = mlx_load_png("./images/coin.png");
-	info->empty = mlx_load_png("./images/free.png");
-	if (!info->player || !info->wall || !info->exit || !info->coin || !info->empty)
-		return(0);
-	return (1);
+    info->player = mlx_load_png("./images/player.png");
+    if (!info->player)
+        return(0);
+    info->wall = mlx_load_png("./images/wall.png");
+    if (!info->wall)
+        return (mlx_delete_texture(info->player),0);        
+    info->exit = mlx_load_png("./images/exit.png");
+    if (!info->exit)
+    {
+        mlx_delete_texture(info->player);
+        return (mlx_delete_texture(info->wall),0);
+    }
+    info->coin = mlx_load_png("./images/coin.png");
+    if (!info->coin)
+    {
+        mlx_delete_texture(info->player);
+        mlx_delete_texture(info->wall);
+        return (mlx_delete_texture(info->exit), 0);
+    }
+    info->empty = mlx_load_png("./images/free.png");
+    if (!info->empty)
+        return (delete_textures_5(info),0);
+    return (1);
 }
 
 int t_to_image(t_map_info *info)
 {
 	info->img1 = mlx_texture_to_image(info->mlx, info->player);
-	info->img2 = mlx_texture_to_image(info->mlx, info->wall);
+	info->img2 = mlx_texture_to_image(info->mlx, info->wall); 
 	info->img3 = mlx_texture_to_image(info->mlx, info->exit);
 	info->img4 = mlx_texture_to_image(info->mlx, info->coin);
 	info->img5 = mlx_texture_to_image(info->mlx, info->empty);
@@ -51,8 +56,8 @@ void display_images(t_map_info *info)
 	int i;
 	int j;
 
-	i = 0;
-	while (info->original_map[i] != '\0')
+	i = -1;
+	while (info->original_map[++i] != '\0')
 	{
 		j = 0;
 		while (info->original_map[i][j] != '\0')
@@ -72,7 +77,6 @@ void display_images(t_map_info *info)
 				mlx_image_to_window(info->mlx, info->img4, j * 90, i * 90);
 			j++;
 		}
-		i++;
 	}
 }
 
@@ -122,6 +126,9 @@ void move(t_map_info *info, int x, int y)
 	}
 	// free shito and terminito everythingo finiitoooo
 	if ((info->data->c_counter == info->count_c) && (info->x == info->eposition_x && info->y == info->eposition_y))
+	{
+		printf("GG EZ (ﾉ◕ヮ◕)ﾉ ･ﾟ✧\n");
 		exit(1);
+	}
 	return;
 }

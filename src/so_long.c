@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/27 16:58:25 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:21:48 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 	t_data		data;
 	t_map_info	info;
 	
-	// atexit(test_leaks);
+	atexit(test_leaks);
 	info.x = 0;
 	info.y = 0;
 	if (ac == 2)
@@ -61,33 +61,13 @@ int	main(int ac, char **av)
 			return (0);
 		info.data = &data;
 		ft_printf("valid map 🤓\n");
-		
 		// check if map can be displayed within the mac's resolution :D
 		if(check_boundaries(&info, &data) == 0)
-			return (ft_printf("Error\nwa tga3ad a regragi!\n"), 0);
+			return (ft_printf("Error\nmap is too big \n"), 0);
+		if (!draw(&info, &data))
+			return (0);
+		ft_printf("apah 🤓\n");
 		
-		// reserve how many pixels will be in the window
-		info.mlx = mlx_init(info.b * 90, info.a * 90, "so long", false); // false to indicate that u cannot expand the window :D
-		if (!info.mlx)
-			return(ft_printf("Error\ncan't open the window!\n"),0);
-
-		// load images 
-		if (!load_images(&info))
-			return(ft_printf("Error\ncan't load images!\n"),0);
-		
-		// Convert texture to a displayable image
-		if (!t_to_image(&info))
-			return(ft_printf("Error\ncan't convert texture to image!\n"),0);
-		
-		// display images
-		display_images(&info);
-		
-		
-		// exit if ESC is pressed 
-		mlx_key_hook(info.mlx, key_press, &info);
-		// printf("here\n");
-		mlx_loop(info.mlx);
-		mlx_terminate(info.mlx);
 	}
 	else
 		ft_printf("Error\nInvalid number of arguments :(\n");

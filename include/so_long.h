@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/27 16:32:57 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:16:48 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ int t_to_image(t_map_info *info);
 void display_images(t_map_info *info);
 void key_press(mlx_key_data_t keydata, void *param);
 void move(t_map_info *info, int x, int y);
+int draw(t_map_info *info, t_data *data);
+void delete_textures_5(t_map_info *info);
+void delete_all_textures(t_map_info *info);
 
 #endif
