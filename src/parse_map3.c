@@ -98,7 +98,7 @@ int	check_valid_path(t_data *data, t_map_info *info)
 	calculate_dimensions(cpy, &info->a, &info->b);
 	flood_fill(info, info->x, info->y);
 	if (data->c_counter != info->collectibles || data->e_counter != info->exits)
-		return (free_words(info->map, info->free_index),(0));
+		return (free_words(info->map, info->free_index), (0));
 	if (!check_map_visited(info->map, &info->a, &info->b))
 		return (0);
 	return (1);
