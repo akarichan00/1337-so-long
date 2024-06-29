@@ -6,6 +6,7 @@
 		"algorithm": "c",
 		"__locale": "c",
 		"ios": "c",
-		"locale": "c"
+		"locale": "c",
+		"__node_handle": "c"
 	}
 }

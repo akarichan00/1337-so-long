@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:48:32 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/28 17:15:49 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/29 16:16:22 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,38 @@ int load_images(t_map_info *info)
 int t_to_image(t_map_info *info)
 {
 	info->img1 = mlx_texture_to_image(info->mlx, info->player);
+	if (!info->img1)
+		return (delete_all_textures(info), (0));
 	info->img2 = mlx_texture_to_image(info->mlx, info->wall); 
+	if (!info->img2)
+	{
+		delete_all_textures(info);
+		return (mlx_delete_image(info->mlx, info->img1), 0);
+	}
 	info->img3 = mlx_texture_to_image(info->mlx, info->exit);
+	if (!info->img3)
+	{
+		delete_all_textures(info);
+		mlx_delete_image(info->mlx, info->img1);
+		return (mlx_delete_image(info->mlx, info->img2), 0);
+	}
 	info->img4 = mlx_texture_to_image(info->mlx, info->coin);
+	if (!info->img4)
+		return (delete_img4(info), 0);
 	info->img5 = mlx_texture_to_image(info->mlx, info->empty);
-	if (!info->img1 || !info->img2 || !info->img3 || !info->img4 || !info->img5)
-		return (0);
+	if (!info->img5)
+		return (delete_img5(info), 0);
 	return (1);
 }
+
+// void delete_all_images(t_map_info *info)
+// {
+// 	mlx_delete_image(info->mlx, info->img1);
+// 	mlx_delete_image(info->mlx, info->img2);
+// 	mlx_delete_image(info->mlx, info->img3);
+// 	mlx_delete_image(info->mlx, info->img4);
+// 	mlx_delete_image(info->mlx, info->img5);
+// }
 
 void display_images(t_map_info *info)
 {
@@ -64,22 +88,30 @@ void display_images(t_map_info *info)
 		{
 			if (info->original_map[i][j] == 'P')
 			{
-				mlx_image_to_window(info->mlx, info->img5, j * 90, i * 90);
-				mlx_image_to_window(info->mlx, info->img1, j * 90, i * 90);
+				check_img(info, info->img5, j , i);
+				check_img(info, info->img1, j , i);
 			}
 			else if (info->original_map[i][j] == '0')
-				mlx_image_to_window(info->mlx, info->img5, j * 90, i * 90);
+				check_img(info, info->img5, j , i);
 			else if (info->original_map[i][j] == '1')
-				mlx_image_to_window(info->mlx, info->img2, j * 90, i * 90);
+				check_img(info, info->img2, j , i);
 			else if (info->original_map[i][j] == 'E')
-				mlx_image_to_window(info->mlx, info->img3, j * 90, i * 90);
+				check_img(info, info->img3, j , i);
 			else if (info->original_map[i][j] == 'C')
-				mlx_image_to_window(info->mlx, info->img4, j * 90, i * 90);
+				check_img(info, info->img4, j , i);
 			j++;
 		}
 	}
 }
-
+void close_game(void *param)
+{
+	t_map_info *info;
+	
+	info = (t_map_info *)param;
+	delete_all_textures(info);
+	mlx_close_window(info->mlx);
+	exit(0);
+}
 void key_press(mlx_key_data_t keydata, void *param)
 {
 	t_map_info *info;
@@ -88,7 +120,9 @@ void key_press(mlx_key_data_t keydata, void *param)
 
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
-		// free everything and destroy images / leaks
+		// finito
+		delete_all_textures(info);
+		mlx_close_window(info->mlx);
 		exit(0);
 	}
 	else if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W) && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
@@ -127,8 +161,10 @@ void move(t_map_info *info, int x, int y)
 	// free shito and terminito everythingo finiitoooo
 	if ((info->data->c_counter == info->count_c) && (info->x == info->eposition_x && info->y == info->eposition_y))
 	{
-		printf("GG EZ (ﾉ◕ヮ◕)ﾉ ･ﾟ✧\n");
-		exit(1);
+		ft_printf("GG EZ (ﾉ◕ヮ◕)ﾉ ･ﾟ✧\n");
+		delete_all_textures(info);
+		mlx_close_window(info->mlx);
+		free_it_all(info);
+		exit(0);
 	}
-	return;
 }

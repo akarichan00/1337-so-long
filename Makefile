@@ -6,7 +6,7 @@ Cflags = -Wall -Wextra -Werror
 libft = lib/libft/libft.a
 printf = lib/printf/libftprintf.a
 
-srcs =  src/so_long.c src/parse_map1.c src/parse_map2.c  src/parse_map3.c src/drawing.c src/drawing2.c
+srcs =  src/so_long.c src/parse_map1.c src/parse_map2.c  src/parse_map3.c src/drawing.c src/drawing2.c src/drawing3.c
 objs = $(srcs:.c=.o)
 
 RESET = \033[0m

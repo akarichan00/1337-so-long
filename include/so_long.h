@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/28 14:16:48 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/29 12:50:26 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ typedef struct s_map_info
 	
 }			t_map_info;
 
-typedef struct s_key_info
-{
-    mlx_key_data_t keydata;
-    t_map_info info;
-} t_key_info;
 
 int			is_map_rectangular(char *map, size_t len);
 char		*read_map(int fd);
@@ -77,16 +72,19 @@ void		get_player_position(t_map_info *info);
 char		**convert_to_2d_array(char *str, int *len, t_map_info *info);
 void		calculate_dimensions(char *str, int *rows, int *cols);
 int			check_valid_path(t_data *data, t_map_info *info);
-void		free_it_all(t_map_info *info, t_data *data);
+void		free_it_all(t_map_info *info);
 
-int check_boundaries(t_map_info *info, t_data *data);
+int check_boundaries(t_map_info *info);
 int load_images(t_map_info *info);
 int t_to_image(t_map_info *info);
 void display_images(t_map_info *info);
 void key_press(mlx_key_data_t keydata, void *param);
 void move(t_map_info *info, int x, int y);
-int draw(t_map_info *info, t_data *data);
+int draw(t_map_info *info);
 void delete_textures_5(t_map_info *info);
 void delete_all_textures(t_map_info *info);
-
+void delete_img4(t_map_info *info);
+void delete_img5(t_map_info *info);
+void check_img(t_map_info *info, mlx_image_t *img, int j, int i);
+void close_game(void *param);
 #endif
