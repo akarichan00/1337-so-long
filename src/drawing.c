@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:48:32 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/29 16:16:22 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/29 18:54:10 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int load_images(t_map_info *info)
 {
-    info->player = mlx_load_png("./images/player.png");
+    info->player = mlx_load_png("./textures/player.png");
     if (!info->player)
         return(0);
-    info->wall = mlx_load_png("./images/wall.png");
+    info->wall = mlx_load_png("./textures/wall.png");
     if (!info->wall)
         return (mlx_delete_texture(info->player),0);        
-    info->exit = mlx_load_png("./images/exit.png");
+    info->exit = mlx_load_png("./textures/exit.png");
     if (!info->exit)
     {
         mlx_delete_texture(info->player);
         return (mlx_delete_texture(info->wall),0);
     }
-    info->coin = mlx_load_png("./images/coin.png");
+    info->coin = mlx_load_png("./textures/coin.png");
     if (!info->coin)
     {
         mlx_delete_texture(info->player);
         mlx_delete_texture(info->wall);
         return (mlx_delete_texture(info->exit), 0);
     }
-    info->empty = mlx_load_png("./images/free.png");
+    info->empty = mlx_load_png("./textures/free.png");
     if (!info->empty)
         return (delete_textures_5(info),0);
     return (1);

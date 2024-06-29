@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 07:52:10 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/29 16:38:00 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:33:29 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int check_boundaries(t_map_info *info)
 int  draw(t_map_info *info)
 {
 	// reserve how many pixels will be in the window
-	info->mlx = mlx_init(info->b * 90, info->a * 90, "so long", false); // false to indicate that u cannot expand the window :D
+	info->mlx = mlx_init(info->b * 90, info->a * 90, "./so_long", true); // false to indicate that u cannot expand the window :D
 	if (!info->mlx)
 	{
 		free_it_all(info);

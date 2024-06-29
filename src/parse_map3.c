@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 07:42:51 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/26 14:26:49 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:23:50 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	check_valid_path(t_data *data, t_map_info *info)
 	calculate_dimensions(cpy, &info->a, &info->b);
 	flood_fill(info, info->x, info->y);
 	if (data->c_counter != info->collectibles || data->e_counter != info->exits)
-		return (0);
+		return (free_words(info->map, info->free_index),(0));
 	if (!check_map_visited(info->map, &info->a, &info->b))
 		return (0);
 	return (1);
