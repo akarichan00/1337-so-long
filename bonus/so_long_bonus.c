@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/30 09:09:37 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:09:24 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
-
-void	test_leaks(void)
-{
-	system("leaks so_long");
-}
+#include "../include/so_long_bonus.h"
 
 void	free_it_all(t_map_info *info)
 {
@@ -51,7 +46,6 @@ int	main(int ac, char **av)
 	t_data		data;
 	t_map_info	info;
 
-	atexit(test_leaks);
 	info.x = 0;
 	info.y = 0;
 	if (ac == 2)
