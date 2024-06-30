@@ -6,16 +6,11 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/30 09:09:37 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/30 11:07:24 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	test_leaks(void)
-{
-	system("leaks so_long");
-}
 
 void	free_it_all(t_map_info *info)
 {
@@ -34,12 +29,12 @@ int	parse_map(char *av, t_data *data, t_map_info *info)
 		if (fd == -1)
 			return (perror("Error\n"), 0);
 		data->map = read_map(fd);
+		close(fd);
 		if (!data->map || !is_map_valid(data) || !check_walls(data->map))
 			return (ft_printf("Error\ninvalid map!\n"), free(data->map), 0);
 	}
 	else
 		return (ft_printf("Error\ninvalid extension for map\n"), 0);
-	(void)info;
 	if (!check_valid_path(data, info))
 		return (ft_printf("Error\ninvalid path!\n"), free_it_all(info),
 			free(data->map), 0);
@@ -51,7 +46,6 @@ int	main(int ac, char **av)
 	t_data		data;
 	t_map_info	info;
 
-	atexit(test_leaks);
 	info.x = 0;
 	info.y = 0;
 	if (ac == 2)

@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 07:42:51 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/29 19:23:50 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/30 17:42:11 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	check_valid_path(t_data *data, t_map_info *info)
 	cpy = str;
 	info->map = convert_to_2d_array(cpy, &i, info);
 	info->original_map = convert_to_2d_array(cpy, &i, info);
-	if (!info->map)
+	if (!info->map || !info->original_map)
 		return (0);
 	get_player_position(info);
 	info->collectibles = 0;

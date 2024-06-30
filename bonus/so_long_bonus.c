@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/30 09:09:24 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/06/30 14:55:01 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	parse_map(char *av, t_data *data, t_map_info *info)
 	}
 	else
 		return (ft_printf("Error\ninvalid extension for map\n"), 0);
-	(void)info;
 	if (!check_valid_path(data, info))
 		return (ft_printf("Error\ninvalid path!\n"), free_it_all(info),
 			free(data->map), 0);
