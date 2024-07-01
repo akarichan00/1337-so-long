@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 07:42:59 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/30 09:17:09 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:02:22 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
 # include <fcntl.h>
-# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

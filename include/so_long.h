@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:17:18 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/29 20:39:40 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:01:51 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
 # include <fcntl.h>
-# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -56,7 +55,6 @@ typedef struct s_map_info
 	mlx_image_t		*img5;
 	t_data			*data;
 	int				count_c;
-
 }					t_map_info;
 
 int					is_map_rectangular(char *map, size_t len);

@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:38:27 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/30 14:55:01 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:44:39 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 			return (0);
 	}
 	else
-		ft_printf("Error\nInvalid number of arguments :(\n");
+		return (ft_printf("Error\nInvalid number of arguments :(\n"), 0);
 	free_it_all(&info);
 	return (1);
 }

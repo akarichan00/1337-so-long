@@ -32,7 +32,7 @@ $(printf):
 	@echo "$(BOLD)$(PURPLE)Building PRINTF$(RESET)"
 	make -C lib/printf
 
-src/%.o: src/%.c 
+src/%.o: src/%.c include/so_long.h
 	$(CC) $(Cflags) -c $< -o $@
 
 bonus: $(NAME_BONUS)
@@ -41,7 +41,7 @@ $(NAME_BONUS) : $(bonus_objs) $(libft) $(printf) ../MLX42/build/libmlx42.a ../ML
 	$(CC) $(Cflags) $(MlxFlags) -o $@ $^ $(libft) $(printf)
 	@echo "$(BOLD)$(PURPLE)$(NAME_BONUS) created successfully!$(RESET)"
 
-bonus/%.o: bonus/%.c 
+bonus/%.o: bonus/%.c include/so_long_bonus.h
 	$(CC) $(Cflags) -c $< -o $@
 
 clean:
