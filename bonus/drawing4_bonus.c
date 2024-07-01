@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 20:35:36 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/30 09:40:30 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:52:54 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	print_moves(t_map_info *info, int c)
 	check_img(info, info->img2, 0, 0);
 	mlx_put_string(info->mlx, "moves: ", 0, 0);
 	mlx_put_string(info->mlx, str, 60, 0);
+	free(str);
 }
