@@ -6,7 +6,7 @@
 /*   By: noben-ai <noben-ai@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 07:52:10 by noben-ai          #+#    #+#             */
-/*   Updated: 2024/06/29 20:40:28 by noben-ai         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:32:05 by noben-ai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_boundaries(t_map_info *info)
 
 int	draw(t_map_info *info)
 {
-	info->mlx = mlx_init(info->b * 90, info->a * 90, "./so_long", true);
+	info->mlx = mlx_init(info->b * 90, info->a * 90, "./so_long", false);
 	if (!info->mlx)
 	{
 		free_it_all(info);
